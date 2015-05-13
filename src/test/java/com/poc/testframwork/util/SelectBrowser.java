@@ -24,7 +24,7 @@ public class SelectBrowser {
 
 	public static WebDriver getDriver() throws IOException {
 
-		if (driver == null) {
+		if (driver == null || driver.toString().contains("(null)")) {
 			ReadConfigFile conf =  new ReadConfigFile();
 			String browser = conf.getBrowser();
 

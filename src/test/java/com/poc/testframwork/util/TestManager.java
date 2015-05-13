@@ -1,6 +1,8 @@
 package com.poc.testframwork.util;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -44,12 +46,21 @@ public class TestManager extends TestUtil {
 		
 				File dirName = new File(".\\"+pageName);
 				
+				
+				
 				if(!dirName.exists())
 					dirName.mkdir();
 			
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             
 				FileUtils.copyFile(scrFile, new File(dirName+"\\screenshot.png"));
+				
+				/*File jenkinsPath =new File("C:/Users/Harjinder Gill/.jenkins/jobs/testframework/cucumber-html-reports/animalTest.feature.html");
+				
+				FileWriter fileWritter = new FileWriter(jenkinsPath.getName(),true);
+    	        BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+    	        bufferWritter.write("<div><img src="+dirName+"\\screenshot.png'/></div>");
+    	        bufferWritter.close();*/
 			}
     }
 

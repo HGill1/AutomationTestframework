@@ -14,15 +14,22 @@ public class AdoptionPage extends AbstractPage{
 	@FindBy(id = "check_btn_01")
 	private WebElement  lionAvailablityCheckBtn;
 	
+	@FindBy(id = "check_btn_02")
+	private WebElement  turtleAvailablityCheckBtn;
+	
 	public AdoptionPage(WebDriver driver) {
 		super(driver);
 	}
 	
-	public AdoptionResultPage checkAnimal(){		
+	public AdoptionResultPage checkAnimal(String animalName){		
 		
 		Select dropdown = new Select(adoptionStartDate);
 		dropdown.selectByVisibleText("Today");
-		lionAvailablityCheckBtn.click();
+		if(animalName.equalsIgnoreCase("Lion"))
+			lionAvailablityCheckBtn.click();
+		else
+			turtleAvailablityCheckBtn.click();
+		
 		return PageFactory.initElements(driver, AdoptionResultPage.class);
 		
 	}

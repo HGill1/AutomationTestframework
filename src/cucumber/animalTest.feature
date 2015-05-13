@@ -1,8 +1,14 @@
-@web
 Feature: animal website tests
 
-  Scenario: tests animal avialbality
+  Background:
     Given I navigate to website
     When I click on adoption link
-    Then I select adoption date
-    And I check animal availablity
+    
+
+  Scenario: tests animal not available
+  	Then I select adoption date and check "Lion"
+    And I check animal not available
+
+  Scenario: test animal available
+    Then I select adoption date and check "Turtle"
+    And I check animal are available

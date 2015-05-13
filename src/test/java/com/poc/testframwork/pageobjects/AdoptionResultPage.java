@@ -12,9 +12,9 @@ public class AdoptionResultPage extends AbstractPage {
 	@FindBy(tagName = "p")
 	private WebElement message;
 	
-	public Boolean checkAnimalMessage(){
+	public String checkAnimalMessage(){
 		System.out.println("message.getText()"+ message.getText());
-		return message.getText().contains("SORRY, ANIMALssss NOT AVAILABLE");
+		return message.getText();
 		
 	}
 
