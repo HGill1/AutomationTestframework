@@ -13,8 +13,11 @@ public class HomePage extends AbstractPage {
 	
 	
 
-	@FindBy(name = "nav_adopt")
+	@FindBy(id = "adoption_link")
 	private WebElement adoptionLink;
+	
+	@FindBy(id = "contact_link")
+	private WebElement contactLink;
 	
 	@FindBys({ @FindBy(tagName = "a"),@FindBy(tagName = "p") })
 	private List<WebElement> allanchor;
@@ -23,13 +26,23 @@ public class HomePage extends AbstractPage {
 		super(driver);	
 	}
 	
-	public AdoptionPage clickOnAdoptionPage(){
+	@SuppressWarnings("unchecked")
+	public <T> T  clickOnAdoptionPage(String link){
 		for(WebElement a: allanchor){
 			System.out.println(a.getText());
 		}
 		System.out.println(allanchor);
-		adoptionLink.click();
-		return PageFactory.initElements(driver, AdoptionPage.class);
+		
+		switch (link) {
+		case "contact":
+			contactLink.click();
+			return (T) getPage(ContactUsPage.class);
+		default:
+			adoptionLink.click();
+			return (T) getPage(AdoptionPage.class);
+		}
+	
+		
 	}
 	
 	

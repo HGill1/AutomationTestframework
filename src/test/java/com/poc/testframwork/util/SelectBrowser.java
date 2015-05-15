@@ -30,7 +30,7 @@ public class SelectBrowser {
 
 			switch (browser) {
 			case "1":
-				 driver = new FirefoxDriver();
+				driver = new FirefoxDriver();
 				break;
 				
 			case "2":
@@ -50,16 +50,16 @@ public class SelectBrowser {
 			}
 			int driverTimeWait = StringUtils.isEmpty(conf.getDriverWait()) ? 10 : Integer.parseInt(conf.getDriverWait());
 			driverWait =  new WebDriverWait(driver, driverTimeWait);
+			if(conf.getMaxWindow().equalsIgnoreCase("Y") && !browser.equalsIgnoreCase("3"))
+				getWindowSize();	
 		}
 		
 		return driver;
 
 	}
-
+	
 	private static WebDriver getChromeDriver() throws IOException {
-		ReadConfigFile conf =  new ReadConfigFile();
-		String chromeDriverPath =  conf.getChromeDriver();
-		System.setProperty("webdriver.chrome.driver",chromeDriverPath);
+		System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 		DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
@@ -69,13 +69,16 @@ public class SelectBrowser {
 	}
 	
 	public static WebDriver getIEDriver() throws IOException{		
-		ReadConfigFile conf =  new ReadConfigFile();
 		DesiredCapabilities ieCapabilities =DesiredCapabilities.internetExplorer(); 
 		ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-		System.setProperty("webdriver.ie.driver", conf.getIEDriver());
-		WebDriver driver = new InternetExplorerDriver(ieCapabilities);
+		System.setProperty("webdriver.ie.driver", "drivers/IEDriverServer.exe");
+		driver = new InternetExplorerDriver(ieCapabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	return driver;
+		return driver;
+	}
+	
+	private static void getWindowSize() {
+		driver.manage().window().maximize();
 	}
 
 }

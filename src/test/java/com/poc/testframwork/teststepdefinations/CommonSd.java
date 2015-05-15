@@ -39,9 +39,10 @@ public class CommonSd extends AbstractSd {
 		onHomePage = onHomePage.navigateToTestSite();
 	}
 
-	@When("^I click on adoption link$")
-	public void i_click_on_adoption_link() throws Throwable {
-		adoptionPage = onHomePage.clickOnAdoptionPage();
+
+	@When("^I click on \"(.*?)\" link$")
+	public void i_click_on_link(String arg1) throws Throwable {
+		adoptionPage = onHomePage.clickOnAdoptionPage(arg1);
 	}
 	
 	@Then("^I select adoption date and check \"(.*?)\"$")

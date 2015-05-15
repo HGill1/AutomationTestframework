@@ -17,7 +17,7 @@ public class ReadConfigFile {
 
 	}
 
-	public String getUrl() {
+	public static String getUrl() {
 
 		return properties.getProperty("url");
 

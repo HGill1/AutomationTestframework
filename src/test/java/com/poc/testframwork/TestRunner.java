@@ -9,7 +9,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 plugin = {"pretty", "html:target/cucumber", "json:C:/Users/Harjinder Gill/.jenkins/jobs/testframework/workspace/cucumber.json"},
 features = {"src/cucumber"},
-monochrome = true
+monochrome = true,
+tags = {"~@wip","@smoke"}
 )
 public class TestRunner {
 	
