@@ -13,7 +13,7 @@ public class HomePage extends AbstractPage {
 	
 	
 
-	@FindBy(id = "adoption_link")
+	@FindBy(id = "adoption_link1")
 	private WebElement adoptionLink;
 	
 	@FindBy(id = "contact_link")
@@ -35,16 +35,11 @@ public class HomePage extends AbstractPage {
 		
 		switch (link) {
 		case "contact":
-			contactLink.click();
+			getElement(contactLink).click();
 			return (T) getPage(ContactUsPage.class);
 		default:
-			adoptionLink.click();
+			getElement(adoptionLink).click();
 			return (T) getPage(AdoptionPage.class);
-		}
-	
-		
+		}		
 	}
-	
-	
-
 }

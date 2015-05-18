@@ -1,18 +1,11 @@
 package com.poc.testframwork.util;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class TestManager extends TestUtil {
@@ -20,7 +13,7 @@ public class TestManager extends TestUtil {
 	
 	
 	
-	public static WebElement waitForElement(WebElement element) {	
+	/*public static WebElement getElement(WebElement element) {	
 		
 		try{
 			element = SelectBrowser.driverWait.until(ExpectedConditions.visibilityOf(element));						
@@ -37,7 +30,7 @@ public class TestManager extends TestUtil {
 			element = null;
 		}				
 		return element;
-	}
+	}*/
 	
 	
 	public static void getscreenshot(WebDriver driver, String pageName) throws Exception 
