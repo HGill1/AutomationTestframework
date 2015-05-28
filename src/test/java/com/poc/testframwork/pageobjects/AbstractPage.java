@@ -42,8 +42,6 @@ public class AbstractPage {
 		} 
 		catch(Exception e){
 			logger.error("Element not found", e);			
-		}finally{
-			element = null;
 		}
 		return element;
 	}
