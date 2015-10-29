@@ -1,5 +1,8 @@
 package com.poc.testframwork.teststepdefinations;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 import com.poc.testframwork.pageobjects.AdoptionPage;
 import com.poc.testframwork.pageobjects.AdoptionResultPage;
 import com.poc.testframwork.pageobjects.HomePage;
@@ -27,10 +30,18 @@ public class CommonSd extends AbstractSd {
 	@After
 	public void tearDown(Scenario scenario) throws Exception {
 		if (scenario.isFailed()) {
-			TestManager.getscreenshot(driver, scenario.getId());
+		//	TestManager.getscreenshot(driver, scenario.getId());
+	
+	            final byte[] screenshot = ((TakesScreenshot) driver)
+	                        .getScreenshotAs(OutputType.BYTES);
+	            scenario.embed(screenshot, "image/png"); //stick it in the report
+ 
 		}
-		System.out.println("scenarios Id:::"+scenario.getId());
+	//	recording.stopRecording();
+		
 		driver.quit();
+		
+		
 	}
 	
 	

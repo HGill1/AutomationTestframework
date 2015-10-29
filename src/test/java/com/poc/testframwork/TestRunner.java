@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-plugin = {"pretty", "html:target/cucumber", "json:C:/Users/Harjinder Gill/.jenkins/jobs/testframework/workspace/cucumber.json"},
+plugin = {"pretty", "html:target/cucumber", "json:target/cucumber-report.json"}, 
 features = {"src/cucumber"},
 monochrome = true,
 tags = {"~@wip","@smoke"}

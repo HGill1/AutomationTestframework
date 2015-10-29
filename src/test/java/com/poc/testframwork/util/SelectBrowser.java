@@ -4,24 +4,39 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Proxy.ProxyType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SelectBrowser {
 
+	public static  String httpProxy = "10.224.23.8:3128";
+	public static  String sslProxy = "";
+	public static  String ftpProxy = "";
 	protected static WebDriver driver;
 	public static WebDriverWait driverWait= null;
 
-	public SelectBrowser() {
-		// TODO Auto-generated constructor stub
-	}
-
+	 public static DesiredCapabilities addProxyCapabilities(DesiredCapabilities capability, String httpProxy, String sslProxy,
+	            String ftpProxy) {
+	        Proxy proxy = new Proxy();
+	        proxy.setProxyType(ProxyType.MANUAL);
+	        proxy.setHttpProxy(httpProxy);
+	        proxy.setSslProxy(sslProxy);
+	        proxy.setFtpProxy(ftpProxy);
+	 
+	        capability.setCapability(CapabilityType.PROXY, proxy);
+	        capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+	        return capability;
+	    }
+	 
 	public static WebDriver getDriver() throws IOException {
 
 		if (driver == null || driver.toString().contains("(null)")) {
