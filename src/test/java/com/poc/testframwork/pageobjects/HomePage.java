@@ -13,7 +13,7 @@ public class HomePage extends AbstractPage {
 	
 	
 
-	@FindBy(id = "adoption_link1")
+	@FindBy(id = "adoption_link")
 	private WebElement adoptionLink;
 	
 	@FindBy(id = "contact_link")
