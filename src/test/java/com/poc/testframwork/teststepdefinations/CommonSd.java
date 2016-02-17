@@ -58,7 +58,7 @@ public class CommonSd extends AbstractSd {
 	
 	@Then("^I select adoption date and check \"(.*?)\"$")
 	public void i_select_adoption_date_and_check(String animalName) throws Throwable {
-		adoptionResultPage = adoptionPage.checkAnimal(animalName);
+		//adoptionResultPage = adoptionPage.checkAnimal(animalName);
 	}
 	
 }
